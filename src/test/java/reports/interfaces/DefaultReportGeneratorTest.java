@@ -2,6 +2,7 @@ package reports.interfaces;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import reports.impl.DefaultReportGenerator;
 import reports.model.Report;
 import reports.model.RequestLog;
 import reports.util.ReportMapper;
@@ -12,14 +13,13 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ReportGeneratorTest {
+public class DefaultReportGeneratorTest {
 
     ReportGenerator reportGenerator;
 
     @BeforeEach
     public void init() {
-        // TODO Initialize report generator
-        reportGenerator = new DummyReportGenerator();
+        reportGenerator = new DefaultReportGenerator();
     }
 
     @Test
