@@ -1,6 +1,7 @@
 package reports.model;
 
 import java.time.Instant;
+import java.util.Objects;
 
 /**
  * Record of the request log.
@@ -33,5 +34,18 @@ public class Request {
 
     public String getRemoteAddr() {
         return remoteAddr;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Request request = (Request) o;
+        return timestamp.equals(request.timestamp) && bytes.equals(request.bytes) && status.equals(request.status) && remoteAddr.equals(request.remoteAddr);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(timestamp, bytes, status, remoteAddr);
     }
 }

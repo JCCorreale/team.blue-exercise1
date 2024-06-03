@@ -1,5 +1,7 @@
 package reports.model;
 
+import java.util.Objects;
+
 /**
  * Traffic data for a particular IP address.
  */
@@ -36,5 +38,18 @@ public class TrafficData {
 
     public Double getPercentageOfTotalBytesSent() {
         return percentageOfTotalBytesSent;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TrafficData that = (TrafficData) o;
+        return ipAddress.equals(that.ipAddress) && numberOfRequests.equals(that.numberOfRequests) && percentageOfTotalRequests.equals(that.percentageOfTotalRequests) && bytesSent.equals(that.bytesSent) && percentageOfTotalBytesSent.equals(that.percentageOfTotalBytesSent);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ipAddress, numberOfRequests, percentageOfTotalRequests, bytesSent, percentageOfTotalBytesSent);
     }
 }
