@@ -1,12 +1,12 @@
-package reports.interfaces;
+package reports.impl;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import reports.impl.DefaultReportGenerator;
+import reports.interfaces.ReportGenerator;
 import reports.model.Report;
 import reports.model.RequestLog;
-import reports.util.ReportMapper;
-import reports.util.RequestMapper;
+import reports.util.ReportMapperCSV;
+import reports.util.RequestMapperCSV;
 import reports.util.TestUtils;
 
 import java.io.IOException;
@@ -23,10 +23,10 @@ public class DefaultReportGeneratorTest {
     }
 
     private void testSample(String sampleResourcePath, String expectedResourcePath) throws IOException {
-        Report expected = new ReportMapper().parseReportCSV(
+        Report expected = new ReportMapperCSV().parseReportCSV(
                 TestUtils.readTextResource(expectedResourcePath));
 
-        RequestLog sample = new RequestMapper()
+        RequestLog sample = new RequestMapperCSV()
                 .parseRequestLogCSV(TestUtils.readTextResource(sampleResourcePath));
 
         Report actual = reportGenerator.generateReport(sample);

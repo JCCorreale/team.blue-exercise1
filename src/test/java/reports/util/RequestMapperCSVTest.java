@@ -11,12 +11,12 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RequestMapperTest {
+public class RequestMapperCSVTest {
 
     @Test
     void testParseRequestLog() throws IOException {
 
-        RequestLog actual = new RequestMapper()
+        RequestLog actual = new RequestMapperCSV()
                 .parseRequestLogCSV(TestUtils.readTextResource("samples/requests1.csv"));
 
         RequestLog expected = new RequestLog(List.of(

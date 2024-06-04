@@ -9,12 +9,12 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ReportMapperTest {
+public class ReportMapperCSVTest {
 
     @Test
     void testParseReport() throws IOException {
 
-        Report actual = new ReportMapper()
+        Report actual = new ReportMapperCSV()
                 .parseReportCSV(TestUtils.readTextResource("expected/ipaddr1.csv"));
 
         Report expected = new Report(List.of(

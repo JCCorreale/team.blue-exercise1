@@ -7,7 +7,7 @@ import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
 
-public class RequestMapper {
+public class RequestMapperCSV {
 
     public static final String CSV_FIELD_SEPARATOR = ";";
 
