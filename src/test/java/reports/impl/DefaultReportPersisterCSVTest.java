@@ -24,7 +24,7 @@ public class DefaultReportPersisterCSVTest {
     @BeforeEach
     public void init() {
         reportMapper = new ReportMapperCSV();
-        reportPersister = new DefaultReportPersiter(new ReportMapperCSV());
+        reportPersister = new DefaultReportPersister(reportMapper);
     }
 
     @Test

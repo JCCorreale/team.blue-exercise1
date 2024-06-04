@@ -15,7 +15,7 @@ public class ReportMapperCSVTest {
     void testParseReport() throws IOException {
 
         Report actual = new ReportMapperCSV()
-                .parseReportCSV(TestUtils.readTextResource("expected/ipaddr1.csv"));
+                .parseReport(TestUtils.readTextResource("expected/ipaddr1.csv"));
 
         Report expected = new Report(List.of(
                 new TrafficData(
@@ -28,6 +28,4 @@ public class ReportMapperCSVTest {
 
         assertEquals(expected, actual);
     }
-
-
 }

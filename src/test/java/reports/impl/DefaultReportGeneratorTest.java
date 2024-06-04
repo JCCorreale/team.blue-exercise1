@@ -23,7 +23,7 @@ public class DefaultReportGeneratorTest {
     }
 
     private void testSample(String sampleResourcePath, String expectedResourcePath) throws IOException {
-        Report expected = new ReportMapperCSV().parseReportCSV(
+        Report expected = new ReportMapperCSV().parseReport(
                 TestUtils.readTextResource(expectedResourcePath));
 
         RequestLog sample = new RequestMapperCSV()

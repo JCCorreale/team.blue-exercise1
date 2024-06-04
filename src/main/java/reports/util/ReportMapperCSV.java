@@ -6,11 +6,11 @@ import reports.model.TrafficData;
 import java.util.Arrays;
 import java.util.List;
 
-public class ReportMapperCSV {
+public class ReportMapperCSV implements ReportMapper {
 
     public static final String CSV_FIELD_SEPARATOR = ";";
 
-    public Report parseReportCSV(List<String> lines) {
+    public Report parseReport(List<String> lines) {
         return new Report(lines.stream().map(line -> {
             List<String> tokens = Arrays.stream(line.split(CSV_FIELD_SEPARATOR))
                     .map(String::trim)
@@ -25,7 +25,7 @@ public class ReportMapperCSV {
         }).toList());
     }
 
-    public List<String> formatReportCSV(Report report) {
+    public List<String> formatReport(Report report) {
         return report.getTrafficData().stream().map(td -> "%s;%s;%s;%s;%s".formatted(
                 td.getIpAddress(),
                 td.getNumberOfRequests(),
