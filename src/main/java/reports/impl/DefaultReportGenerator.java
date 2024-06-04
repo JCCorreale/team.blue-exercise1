@@ -5,6 +5,7 @@ import reports.model.Report;
 import reports.model.RequestLog;
 import reports.model.TrafficData;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,7 +34,7 @@ public class DefaultReportGenerator implements ReportGenerator {
         return new Report(
                 trafficData.values().stream().map(td ->
                         td.toTrafficData(totalBytes, totalRequests)
-                ).toList()
+                ).sorted(Comparator.comparing(TrafficData::getNumberOfRequests).reversed().thenComparing(TrafficData::getIpAddress)).toList()
         );
     }
 

@@ -22,17 +22,25 @@ public class DefaultReportGeneratorTest {
         reportGenerator = new DefaultReportGenerator();
     }
 
-    @Test
-    public void testSample1() throws IOException {
-
+    private void testSample(String sampleResourcePath, String expectedResourcePath) throws IOException {
         Report expected = new ReportMapper().parseReportCSV(
-                TestUtils.readTextResource("expected/ipaddr1.csv"));
+                TestUtils.readTextResource(expectedResourcePath));
 
         RequestLog sample = new RequestMapper()
-                .parseRequestLogCSV(TestUtils.readTextResource("samples/requests1.csv"));
+                .parseRequestLogCSV(TestUtils.readTextResource(sampleResourcePath));
 
         Report actual = reportGenerator.generateReport(sample);
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testSample1() throws IOException {
+        testSample("samples/requests1.csv", "expected/ipaddr1.csv");
+    }
+
+    @Test
+    public void testSample2() throws IOException {
+        testSample( "samples/requests2.csv", "expected/ipaddr2.csv");
     }
 }
